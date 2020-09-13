@@ -10,8 +10,8 @@ class ImageHelper {
     companion object{
         fun calculateInSampleSize(options:BitmapFactory.Options,reqWidth:Int,reqHeight:Int):Int{
             val height:Int=options.outHeight
-            val width:Int=options.outWidth
-            var inSampleSize:Int=1
+            val width =options.outWidth
+            var inSampleSize =1
 
             if (height>reqHeight||width>reqWidth){
                 val halfHeight:Int=height/2

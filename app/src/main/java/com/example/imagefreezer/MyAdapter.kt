@@ -3,36 +3,38 @@ package com.example.imagefreezer
 import android.content.Context
 import android.graphics.Bitmap
 import android.service.voice.VoiceInteractionService
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import java.io.File
 
-class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>(){
 
-    private lateinit var gallerylist:ArrayList<Cell>
-    private lateinit var context:Context
+class MyAdapter(var context: Context ,private var _gallerylist: ArrayList<Cell>) :
+    RecyclerView.Adapter<MyAdapter.ViewHolder>() {
 
+     
 
-    constructor(_context: Context, _gallerylist:ArrayList<Cell> ){
-
-        context=_context
-        gallerylist=_gallerylist
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyAdapter.ViewHolder {
 
         var view:View=LayoutInflater.from(parent.context).inflate(R.layout.cell,parent,false)
-        return MyAdapter.ViewHolder(view)
+        return ViewHolder(view)
 
     }
+
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.img.setScaleType(ImageView.ScaleType.CENTER_CROP)
 
-        setImageFromPath(gallerylist.get(position).,holder.img)
+        setImageFromPath(_gallerylist.get(position).path ,holder.img)
+        holder.img.setOnClickListener{
+            Toast.makeText(context,_gallerylist.get(position).title,Toast.LENGTH_SHORT).show()
+        }
+
     }
 
    class ViewHolder: RecyclerView.ViewHolder {
@@ -48,7 +50,9 @@ class MyAdapter: RecyclerView.Adapter<MyAdapter.ViewHolder>(){
     }
 
     override fun getItemCount(): Int {
-        return gallerylist.size
+        Log.d("Adapet", _gallerylist.size.toString())
+        return _gallerylist.size
+
     }
 
     private fun setImageFromPath(path:String,image:ImageView){

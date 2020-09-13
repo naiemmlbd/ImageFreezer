@@ -2,6 +2,6 @@ package com.example.imagefreezer
 
 class Cell {
 
-    private lateinit var title: String
-    private lateinit var path :String
+     lateinit var title: String
+     lateinit var path :String
 }
