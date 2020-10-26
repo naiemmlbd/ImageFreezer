@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun showImages() {
 
-        var path =Environment.getExternalStorageDirectory().absolutePath + messagePath
+        var path = messagePath
 
         allFilesPath=listAllFiles(path)
         Log.d("path", allFilesPath.toString())
