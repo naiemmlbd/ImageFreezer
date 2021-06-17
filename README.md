@@ -1,1 +1,2 @@
-# File manager for Image + ImageFreezer
+# File manager for Image + ImageFreezer (Under Development)
+
